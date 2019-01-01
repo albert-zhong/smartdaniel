@@ -7,29 +7,49 @@ import java.util.ArrayList;
 
 public class LinesReader {
 
-    public static ArrayList<String> linesReader() {
+    public static ArrayList<String> getLines(boolean isDaniel) {
 
-        ArrayList<String> daniels = new ArrayList<String>();
-
+        ArrayList<String> lines = new ArrayList<String>();
         BufferedReader br = null;
-        try {
-            br = new BufferedReader(new FileReader("Daniels.txt"));
-            String line;
 
-            while ((line = br.readLine()) != null) {
-                daniels.add(line);
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
+        if (isDaniel) {
             try {
-                br.close();
+                br = new BufferedReader(new FileReader("Daniels.txt"));
+                String currentLine;
+
+                while ((currentLine = br.readLine()) != null) {
+                    lines.add(currentLine);
+                }
+
             } catch (IOException e) {
                 e.printStackTrace();
+            } finally {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        } else {
+            try {
+                br = new BufferedReader(new FileReader("NonDaniels.txt"));
+                String currentLine;
+
+                while ((currentLine = br.readLine()) != null) {
+                    lines.add(currentLine);
+                }
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
-        return daniels;
+        return lines;
     }
 
     public static void printStringArrayList(ArrayList<String> arrayList) {

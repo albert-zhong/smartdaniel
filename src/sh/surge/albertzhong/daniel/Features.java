@@ -6,11 +6,17 @@ public class Features {
 
     public static int getWordCount(String str) {
         char[] charArray = str.toCharArray();
-        int wordCount = 0;
 
+        int wordCount;
+
+        if (Character.isLetterOrDigit(charArray[0])) {
+            wordCount = 1;
+        } else {
+            wordCount = 0;
+        }
 
         for (int i=1; i<charArray.length; i++) {
-            if (Character.isLetterOrDigit(charArray[i]) && charArray[i-1] == ' ') {
+            if ( (Character.isLetterOrDigit(charArray[i]) && charArray[i-1] == ' ') ) {
                 wordCount++;
             }
         }
