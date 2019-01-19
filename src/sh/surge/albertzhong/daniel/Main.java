@@ -7,9 +7,6 @@ public class Main {
         daniels.applyDataSet("Daniels.txt");
 
 
-
-
-
     }
 
 }
